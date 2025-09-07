@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- !Daisy UI & Tailwind CND -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <title>Green Earth</title>
+    <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon" />
+  </head>
+  <body>
+    <!-- !Navbar Section -->
+    <section>
+      <div class="navbar bg-[#15803D] md:px-[135px]">
+        <div class="navbar-start">
+          <div class="dropdown">
+            <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h8m-8 6h16"
+                />
+              </svg>
+            </div>
+            <ul
+              tabindex="0"
+              class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+            >
+              <li><a>About</a></li>
+              <li><a>Gallery</a></li>
+              <li><a>PLant a Tree</a></li>
+            </ul>
+          </div>
+          <a class="text-xl text-white font-bold">Green Earth</a>
+        </div>
+        <div class="navbar-center hidden lg:flex">
+          <ul class="menu menu-horizontal px-1 text-white font-semibold">
+            <li><a>About</a></li>
+            <li><a>Gallery</a></li>
+            <li><a>PLant a Tree</a></li>
+          </ul>
+        </div>
+        <div class="navbar-end">
+          <button
+            class="btn bg-[#FACC15] text-[#15803D] border-2 border-[#FACC15] rounded-3xl"
+          >
+            Plant a Tree
+          </button>
+        </div>
+      </div>
+    </section>
+    <!-- !Hero Section -->
+    <section
+      class="flex flex:col md:flex-row bg-[#CFF0DC] justify-between items-center"
+    >
+      <div>
+        <img src="./assets/hero-leaf1.png" alt="" />
+      </div>
+      <div class="text-center">
+        <h1 class="text-[#1F2937] font-bold text-6xl mb-2">
+          Plant a Tree, Grow a Future
+        </h1>
+        <p class="text-[#1F2937] mb-6">
+          Join our mission to plant 1 million trees and make the Earth greener
+          for future <br />generations.
+        </p>
+        <button
+          class="btn bg-[#FACC15] text-[#15803D] border-2 border-[#FACC15] rounded-3xl"
+        >
+          Get Involved
+        </button>
+      </div>
+      <div>
+        <img src="./assets/hero-leaf2.png" alt="" />
+      </div>
+    </section>
+    <!-- !Card Section -->
+    <section class="bg-green-50">
+      <h1 class="text-2xl text-center py-24">Chose Your Trees</h1>
+      <div
+        class="grid grid-cols-1 md:grid-cols-12 gap-5 px-4 max-w-[1650px] mx-auto"
+      >
+        <div class="menu-section md:col-span-2 bg-white p-4 rounded-xl shadow">
+          <ul>
+            <h4 class="text-xl font-semibold mb-4">Categories</h4>
+            <li class="bg-[#15803D]">All Tress</li>
+            <li>link2</li>
+            <li>link3</li>
+            <li>link4</li>
+            <li>link5</li>
+          </ul>
+        </div>
+        <!-- * Cards -->
+        <div
+          class="card-section md:col-span-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-4"
+        >
+          <div class="card bg-base-100 w-full shadow-sm">
+            <figure>
+              <img
+                src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                alt="Shoes"
+              />
+            </figure>
+            <div class="card-body">
+              <h2 class="card-title">
+                Card Title
+                <div class="badge badge-secondary">NEW</div>
+              </h2>
+              <p>
+                A card component has a figure, a body part, and inside body
+                there are title and actions parts
+              </p>
+              <div class="card-actions justify-end">
+                <div class="badge badge-outline">Fashion</div>
+                <div class="badge badge-outline">Products</div>
+              </div>
+            </div>
+          </div>
+          <div class="card bg-base-100 w-full shadow-sm">
+            <figure>
+              <img
+                src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                alt="Shoes"
+              />
+            </figure>
+            <div class="card-body">
+              <h2 class="card-title">
+                Card Title
+                <div class="badge badge-secondary">NEW</div>
+              </h2>
+              <p>
+                A card component has a figure, a body part, and inside body
+                there are title and actions parts
+              </p>
+              <div class="card-actions justify-end">
+                <div class="badge badge-outline">Fashion</div>
+                <div class="badge badge-outline">Products</div>
+              </div>
+            </div>
+          </div>
+          <div class="card bg-base-100 w-full shadow-sm">
+            <figure>
+              <img
+                src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                alt="Shoes"
+              />
+            </figure>
+            <div class="card-body">
+              <h2 class="card-title">
+                Card Title
+                <div class="badge badge-secondary">NEW</div>
+              </h2>
+              <p>
+                A card component has a figure, a body part, and inside body
+                there are title and actions parts
+              </p>
+              <div class="card-actions justify-end">
+                <div class="badge badge-outline">Fashion</div>
+                <div class="badge badge-outline">Products</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- * Carts -->
+        <div class="menu-section md:col-span-2 bg-white p-4 rounded-xl shadow">
+          <h2>Your Cart</h2>
+          <div>
+            <p>Lorem ipsum dolor sit amet.</p>
+          </div>
+          <div>
+            <p>Lorem ipsum dolor sit amet.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

@@ -5,6 +5,7 @@ const cardContainer = document.getElementById("card-container");
 const cartContainer = document.getElementById("cart-container");
 
 let yourCart = [];
+let totalPrice = 0;
 
 // !Category section funtionality
 
@@ -122,22 +123,65 @@ const handleCart = (e) => {
 
 // Showing into to cart section
 const showPlantsOnCart = (yourCart) => {
+  const totalDiv = document.getElementById("cart-total");
   cartContainer.innerHTML = "";
+
   yourCart.forEach((plantCart) => {
     cartContainer.innerHTML += `
-          <div
+          <div id="new-item"
             class="bg-green-100 rounded-xl px-4 py-2 flex justify-between items-center my-3"
           >
-            <div>
+            <div >
               <h4>${plantCart.name}</h4>
               <p>${plantCart.price}</p>
             </div>
-            <div>❌</div>
+            <div>
+            <button onClick= deletCart('${plantCart.id}')>❌</button>
+            </div>
           </div>
 
     `;
+    totalPrice += parseFloat(plantCart.price);
+    totalDiv.innerText = `Total: ৳ ${totalPrice}`;
+  });
+  cartContainer.append(totalDiv);
+};
+
+const deletCart = (plantID) => {
+  const newItem = document.getElementById("new-item");
+  newItem.innerHTML = "";
+  newItem.forEach((plantID) => {
+    plantID.innerHTML = "";
   });
 };
+
+// const showPlantsOnCart = (yourCart) => {
+//   const totalDiv = document.getElementById("cart-total");
+
+//   cartContainer.innerHTML = "";
+//   cartContainer.appendChild(totalDiv);
+
+//   // Add cart items BEFORE the total div
+//   yourCart.forEach((plantCart) => {
+//     const cartItem = document.createElement("div");
+//     cartItem.className =
+//       "bg-green-100 rounded-xl px-4 py-2 flex justify-between items-center my-3";
+//     cartItem.innerHTML = `
+//       <div>
+//         <h4>${plantCart.name}</h4>
+//         <p>${plantCart.price}</p>
+//       </div>
+//       <div>❌</div>
+//     `;
+
+//     // put before the total div
+//     cartContainer.insertBefore(cartItem, totalDiv);
+//   });
+
+//   // Update total price
+//   const total = yourCart.reduce((sum, item) => sum + parseFloat(item.price), 0);
+//   totalDiv.innerText = `Total: ৳ ${total}`;
+// };
 
 loadCategory();
 loadAllPlants();

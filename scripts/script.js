@@ -2,6 +2,9 @@
 
 const categoryContianer = document.getElementById("categories-container");
 const cardContainer = document.getElementById("card-container");
+const cartContainer = document.getElementById("cart-container");
+
+let yourCart = [];
 
 // !Category section funtionality
 
@@ -43,7 +46,6 @@ const showCategory = (categories) => {
 // !Showing Plants Functionality
 // Showing plants card using category section
 const loadPlantsByCategory = (plantId) => {
-  console.log(plantId);
   fetch(`https://openapi.programming-hero.com/api/category/${plantId}`)
     .then((res) => res.json())
     .then((data) => {
@@ -54,13 +56,24 @@ const loadPlantsByCategory = (plantId) => {
       console.log(err);
     });
 };
+const loadAllPlants = () => {
+  fetch(`https://openapi.programming-hero.com/api/plants`)
+    .then((res) => res.json())
+    .then((data) => {
+      showPlantsByCategories(data.plants);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
 
 // Showing plant cards but catrgories
 const showPlantsByCategories = (plantCard) => {
+  cardContainer.innerHTML += ``;
   cardContainer.innerHTML = "";
   plantCard.forEach((plant) => {
     cardContainer.innerHTML += `
-    <div
+         <div id="${plant.id}"
             class="card bg-base-100 w-full h-[450px] shadow-sm p-4 rounded-md"
           >
             <figure>
@@ -73,7 +86,7 @@ const showPlantsByCategories = (plantCard) => {
               <p>${plant.description}</p>
               <div class="card-actions justify-between">
                 <div class="badge bg-[#DCFCE7] text-[#15803D]">${plant.category}</div>
-                <div class="font-bold">৳ ${plant.price}</div>
+                <div  class="font-bold">৳ <span>${plant.price}</span></div>
               </div>
             </div>
             <button 
@@ -86,4 +99,45 @@ const showPlantsByCategories = (plantCard) => {
   });
 };
 
+// ! Adding plants to cart
+cardContainer.addEventListener("click", (e) => {
+  if (e.target.innerText === "Add To Cart") {
+    handleCart(e);
+  }
+});
+// Handle Add to cart function
+const handleCart = (e) => {
+  const name = e.target.parentNode.children[1].children[0].innerText;
+  const price =
+    e.target.parentNode.children[1].children[2].children[1].children[0]
+      .innerText;
+
+  yourCart.push({
+    name: name,
+    price: price,
+  });
+
+  showPlantsOnCart(yourCart);
+};
+
+// Showing into to cart section
+const showPlantsOnCart = (yourCart) => {
+  cartContainer.innerHTML = "";
+  yourCart.forEach((plantCart) => {
+    cartContainer.innerHTML += `
+          <div
+            class="bg-green-100 rounded-xl px-4 py-2 flex justify-between items-center my-3"
+          >
+            <div>
+              <h4>${plantCart.name}</h4>
+              <p>${plantCart.price}</p>
+            </div>
+            <div>❌</div>
+          </div>
+
+    `;
+  });
+};
+
 loadCategory();
+loadAllPlants();

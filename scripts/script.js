@@ -69,13 +69,13 @@ const loadAllPlants = () => {
 };
 
 // short description
-const shortText = (text, wordLimit) => {
-  const words = text.split(" ");
-  if (words.length > wordLimit) {
-    return words.slice(0, wordLimit).join(" ") + "...";
-  }
-  return text;
-};
+// const shortText = (text, wordLimit) => {
+//   const words = text.split(" ");
+//   if (words.length > wordLimit) {
+//     return words.slice(0, wordLimit).join(" ") + "...";
+//   }
+//   return text;
+// };
 
 // Showing plant cards but catrgories
 const showPlantsByCategories = (plantCard) => {
@@ -84,18 +84,16 @@ const showPlantsByCategories = (plantCard) => {
   plantCard.forEach((plant) => {
     cardContainer.innerHTML += `
                     <div id="${plant.id}"
-                    class="card bg-base-100 w-full h-[450px] shadow-sm p-4 rounded-md"
+                    class="card bg-base-100 w-full h-full shadow-sm p-4 rounded-md"
                     >
                     <img class="h-[200px] w-full object-cover rounded-md"
                       src="${plant.image}"/>
                     <div class="card-body">
                     <h2 onClick="loadModal(${plant.id})" 
                      class="card-title">${plant.name}</h2>
-                    <p>${shortText(plant.description, 10)}</p>
+                    <p>${plant.description}</p>
                     <div class="card-actions justify-between">
-                    <div class="badge bg-[#DCFCE7] text-[#15803D]">${
-                      plant.category
-                    }</div>
+                    <div class="badge bg-[#DCFCE7] text-[#15803D]">${plant.category}</div>
                     <div  class="font-bold">৳ <span>${plant.price}</span></div>
                     </div>
                     </div>

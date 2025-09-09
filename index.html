@@ -56,7 +56,7 @@
         </div>
         <div class="navbar-end">
           <button
-            class="btn bg-[#FACC15] text-[#15803D] border-2 border-[#FACC15] rounded-3xl"
+            class="btn bg-[#FACC15] text-[#15803D] hover:bg-[#15803D] hover:text-[#FACC15] border-none rounded-3xl shadow transition-all duration-300"
           >
             Plant a Tree
           </button>
@@ -65,7 +65,7 @@
     </section>
     <!-- !Hero Section -->
     <section
-      class="flex flex:col md:flex-row bg-[#CFF0DC] justify-between items-center"
+      class="flex flex:col md:flex-row bg-[#CFF0DC] justify-between items-center py-6"
     >
       <div>
         <img src="./assets/hero-leaf1.png" alt="" />
@@ -79,7 +79,7 @@
           for future <br />generations.
         </p>
         <button
-          class="btn bg-[#FACC15] text-[#15803D] border-2 border-[#FACC15] rounded-3xl"
+          class="btn bg-[#FACC15] text-[#15803D] hover:bg-[#15803D] hover:text-[#FACC15] border-none rounded-3xl shadow transition-all duration-300"
         >
           Get Involved
         </button>
@@ -163,12 +163,12 @@
           About the Campaign
         </h2>
         <div
-          class="flex justify-center items-center max-w-[980px] mx-auto gap-8"
+          class="flex flex-col md:flex-row justify-center items-center max-w-[980px] mx-auto gap-8"
         >
           <div class="flex-1">
             <img src="./assets/about.png" alt="" />
           </div>
-          <div class="flex-1">
+          <div class="flex-1 px-4 md:px-0">
             <p class="mb-5">
               Green Earth is a global tree plantation initiative dedicated to
               fighting climate change. Since our start, we’ve planted over
@@ -192,8 +192,10 @@
         >
           Our Impact
         </h2>
-        <div class="grid grid-cols-3 text-center mx-auto">
-          <div class="card bg-base-100 w-[500px] h-[150px] shadow-sm mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center mx-auto">
+          <div
+            class="card bg-base-100 w-[500px] h-[150px] shadow-sm mx-auto hover:bg-green-200 transition-all duration-300"
+          >
             <div class="card-body items-center text-center">
               <h2 class="card-title text-[#15803D] font-semibold text-4xl mb-4">
                 500K+
@@ -201,7 +203,9 @@
               <p class="text-[#1F2937]">Tress Planted</p>
             </div>
           </div>
-          <div class="card bg-base-100 w-[500px] h-[150px] shadow-sm mx-auto">
+          <div
+            class="card bg-base-100 w-[500px] h-[150px] shadow-sm mx-auto hover:bg-green-200 transition-all duration-300"
+          >
             <div class="card-body items-center text-center">
               <h2 class="card-title text-[#15803D] font-semibold text-4xl">
                 120K+
@@ -209,7 +213,9 @@
               <p class="text-[#1F2937]">Communities Involved</p>
             </div>
           </div>
-          <div class="card bg-base-100 w-[500px] h-[150px] shadow-sm mx-auto">
+          <div
+            class="card bg-base-100 w-[500px] h-[150px] shadow-sm mx-auto hover:bg-green-200 transition-all duration-300"
+          >
             <div class="card-body items-center text-center">
               <h2 class="card-title text-[#15803D] font-semibold text-4xl">
                 30+
@@ -248,7 +254,7 @@
           </select>
 
           <button
-            class="btn bg-[#FACC15] text-[#15803D] border-2 border-[#FACC15] rounded-3xl"
+            class="btn bg-[#FACC15] text-[#15803D] hover:bg-[#15803D] hover:text-[#FACC15] border-none rounded-3xl shadow transition-all duration-300"
           >
             Donate Now
           </button>

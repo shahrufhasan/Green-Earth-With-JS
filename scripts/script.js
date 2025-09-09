@@ -6,7 +6,6 @@ const cartContainer = document.getElementById("cart-container");
 const modalContainer = document.getElementById("modal-details");
 
 let yourCart = [];
-let totalPrice = 0;
 
 // !Category section funtionality
 
@@ -129,7 +128,7 @@ const showPlantsOnCart = (yourCart) => {
   const totalDiv = document.getElementById("cart-total");
   cartContainer.innerHTML = "";
 
-  totalPrice = 0;
+  let totalPrice = 0;
 
   yourCart.forEach((plantCart) => {
     console.log(plantCart);

@@ -68,34 +68,44 @@ const loadAllPlants = () => {
     });
 };
 
+// short description
+const shortText = (text, wordLimit) => {
+  const words = text.split(" ");
+  if (words.length > wordLimit) {
+    return words.slice(0, wordLimit).join(" ") + "...";
+  }
+  return text;
+};
+
 // Showing plant cards but catrgories
 const showPlantsByCategories = (plantCard) => {
   cardContainer.innerHTML += ``;
   cardContainer.innerHTML = "";
   plantCard.forEach((plant) => {
     cardContainer.innerHTML += `
-         <div id="${plant.id}"
-            class="card bg-base-100 w-full h-[450px] shadow-sm p-4 rounded-md"
-          >
-            <figure>
-              <img class=""
-                src="${plant.image}"
-              />
-            </figure>
-            <div class="card-body">
-              <h2 onClick="loadModal(${plant.id})" class="card-title">${plant.name}</h2>
-              <p>${plant.description}</p>
-              <div class="card-actions justify-between">
-                <div class="badge bg-[#DCFCE7] text-[#15803D]">${plant.category}</div>
-                <div  class="font-bold">৳ <span>${plant.price}</span></div>
-              </div>
-            </div>
-            <button 
-              class="bg-[#15803D] py-2 rounded-3xl text-white hover:bg-[#FACC15] hover:text-[#15803D] transition-all ease-linear duration-200"
-            >
-              Add To Cart
-            </button>
-          </div>
+                    <div id="${plant.id}"
+                    class="card bg-base-100 w-full h-[450px] shadow-sm p-4 rounded-md"
+                    >
+                    <img class="h-[200px] w-full object-cover rounded-md"
+                      src="${plant.image}"/>
+                    <div class="card-body">
+                    <h2 onClick="loadModal(${plant.id})" 
+                     class="card-title">${plant.name}</h2>
+                    <p>${shortText(plant.description, 10)}</p>
+                    <div class="card-actions justify-between">
+                    <div class="badge bg-[#DCFCE7] text-[#15803D]">${
+                      plant.category
+                    }</div>
+                    <div  class="font-bold">৳ <span>${plant.price}</span></div>
+                    </div>
+                    </div>
+                    <button
+                    class="bg-[#15803D] py-2 rounded-3xl text-white hover:bg-[#FACC15] hover:text-[#15803D] transition-all ease-linear duration-200"
+                    >
+                    Add To Cart
+                    </button>
+                    </div>
+
     `;
   });
 };
@@ -174,7 +184,7 @@ const displayModal = (planDetails) => {
   modalContainer.innerHTML = `
             <div class= "space-y-4">
             <h2 class="card-title text-2xl">${planDetails.name}</h2>
-            <img class="h-[200px] w-full object-cover rounded-md" src="${planDetails.image}" alt="" />
+            <img class="h-[300px] w-full object-cover rounded-md" src="${planDetails.image}" alt="" />
             <p class="font-bold">Category:  <span class="font-normal">${planDetails.category}</span></p>
             <p class="font-bold">Price:  <span class="font-normal"> ৳ ${planDetails.price}</span></p>
             <p class="font-bold">Description:  <span class="font-normal"> ৳ ${planDetails.description}</span></p>

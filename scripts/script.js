@@ -113,6 +113,8 @@ const handleCart = (e) => {
     e.target.parentNode.children[1].children[2].children[1].children[0]
       .innerText;
 
+  alert(name + " has been added to the cart");
+
   yourCart.push({
     name: name,
     price: price,
@@ -126,7 +128,10 @@ const showPlantsOnCart = (yourCart) => {
   const totalDiv = document.getElementById("cart-total");
   cartContainer.innerHTML = "";
 
+  totalPrice = 0;
+
   yourCart.forEach((plantCart) => {
+    console.log(plantCart);
     cartContainer.innerHTML += `
           <div id="new-item"
             class="bg-green-100 rounded-xl px-4 py-2 flex justify-between items-center my-3"
@@ -136,52 +141,23 @@ const showPlantsOnCart = (yourCart) => {
               <p>${plantCart.price}</p>
             </div>
             <div>
-            <button onClick= deletCart('${plantCart.id}')>❌</button>
+            <button onClick="deletCart('${plantCart.name}')" >❌</button>
             </div>
           </div>
 
     `;
+
     totalPrice += parseFloat(plantCart.price);
-    totalDiv.innerText = `Total: ৳ ${totalPrice}`;
   });
+  // updating the card price
+  totalDiv.innerText = `Total: ৳ ${totalPrice}`;
   cartContainer.append(totalDiv);
 };
 
 const deletCart = (plantID) => {
-  const newItem = document.getElementById("new-item");
-  newItem.innerHTML = "";
-  newItem.forEach((plantID) => {
-    plantID.innerHTML = "";
-  });
+  yourCart = yourCart.filter((plant) => plant.name !== plantID);
+  showPlantsOnCart(yourCart);
 };
-
-// const showPlantsOnCart = (yourCart) => {
-//   const totalDiv = document.getElementById("cart-total");
-
-//   cartContainer.innerHTML = "";
-//   cartContainer.appendChild(totalDiv);
-
-//   // Add cart items BEFORE the total div
-//   yourCart.forEach((plantCart) => {
-//     const cartItem = document.createElement("div");
-//     cartItem.className =
-//       "bg-green-100 rounded-xl px-4 py-2 flex justify-between items-center my-3";
-//     cartItem.innerHTML = `
-//       <div>
-//         <h4>${plantCart.name}</h4>
-//         <p>${plantCart.price}</p>
-//       </div>
-//       <div>❌</div>
-//     `;
-
-//     // put before the total div
-//     cartContainer.insertBefore(cartItem, totalDiv);
-//   });
-
-//   // Update total price
-//   const total = yourCart.reduce((sum, item) => sum + parseFloat(item.price), 0);
-//   totalDiv.innerText = `Total: ৳ ${total}`;
-// };
 
 loadCategory();
 loadAllPlants();

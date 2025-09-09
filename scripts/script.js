@@ -3,6 +3,7 @@
 const categoryContianer = document.getElementById("categories-container");
 const cardContainer = document.getElementById("card-container");
 const cartContainer = document.getElementById("cart-container");
+const modalContainer = document.getElementById("modal-details");
 
 let yourCart = [];
 let totalPrice = 0;
@@ -37,7 +38,7 @@ const showCategory = (categories) => {
       li.classList.remove("bg-[#15803D]", "text-white");
     });
     if (e.target.localName === "li") {
-      //   console.log(e.target.id);
+      loadingSpinner();
       e.target.classList.add("bg-[#15803D]", "text-white");
       loadPlantsByCategory(e.target.id);
     }
@@ -78,12 +79,12 @@ const showPlantsByCategories = (plantCard) => {
             class="card bg-base-100 w-full h-[450px] shadow-sm p-4 rounded-md"
           >
             <figure>
-              <img 
+              <img class=""
                 src="${plant.image}"
               />
             </figure>
             <div class="card-body">
-              <h2 class="card-title">${plant.name}</h2>
+              <h2 onClick="loadModal(${plant.id})" class="card-title">${plant.name}</h2>
               <p>${plant.description}</p>
               <div class="card-actions justify-between">
                 <div class="badge bg-[#DCFCE7] text-[#15803D]">${plant.category}</div>
@@ -157,6 +158,49 @@ const showPlantsOnCart = (yourCart) => {
 const deletCart = (plantID) => {
   yourCart = yourCart.filter((plant) => plant.name !== plantID);
   showPlantsOnCart(yourCart);
+};
+// !Loading Modal Funtion
+
+const loadModal = (id) => {
+  const url = `https://openapi.programming-hero.com/api/plant/${id}`;
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => {
+      displayModal(data.plants);
+    });
+};
+// display modal funtion
+const displayModal = (planDetails) => {
+  console.log(planDetails);
+  modalContainer.innerHTML = `
+            <div class= "space-y-4">
+            <h2 class="card-title text-2xl">${planDetails.name}</h2>
+            <img class="h-[200px] w-full object-cover rounded-md" src="${planDetails.image}" alt="" />
+            <p class="font-bold">Category:  <span class="font-normal">${planDetails.category}</span></p>
+            <p class="font-bold">Price:  <span class="font-normal"> ৳ ${planDetails.price}</span></p>
+            <p class="font-bold">Description:  <span class="font-normal"> ৳ ${planDetails.description}</span></p>
+          </div>
+  `;
+  document.getElementById("modalBox").showModal();
+};
+
+// !Loading Spinner Function
+
+const loadingSpinner = () => {
+  cardContainer.innerHTML = `
+          <div
+            class="fixed inset-0 flex justify-center items-center bg-white z-50"
+          >
+            <span class="loading loading-spinner text-primary"></span>
+            <span class="loading loading-spinner text-secondary"></span>
+            <span class="loading loading-spinner text-accent"></span>
+            <span class="loading loading-spinner text-neutral"></span>
+            <span class="loading loading-spinner text-info"></span>
+            <span class="loading loading-spinner text-success"></span>
+            <span class="loading loading-spinner text-warning"></span>
+            <span class="loading loading-spinner text-error"></span>
+          </div>
+  `;
 };
 
 loadCategory();

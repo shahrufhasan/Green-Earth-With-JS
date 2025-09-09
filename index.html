@@ -108,7 +108,20 @@
         <div
           id="card-container"
           class="card-section md:col-span-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-        ></div>
+        >
+          <div
+            class="fixed inset-0 flex justify-center items-center bg-white z-50"
+          >
+            <span class="loading loading-spinner text-primary"></span>
+            <span class="loading loading-spinner text-secondary"></span>
+            <span class="loading loading-spinner text-accent"></span>
+            <span class="loading loading-spinner text-neutral"></span>
+            <span class="loading loading-spinner text-info"></span>
+            <span class="loading loading-spinner text-success"></span>
+            <span class="loading loading-spinner text-warning"></span>
+            <span class="loading loading-spinner text-error"></span>
+          </div>
+        </div>
 
         <!-- !Cart -->
         <div
@@ -124,6 +137,28 @@
         </div>
       </div>
     </section>
+
+    <!-- Open the modal using ID.showModal() method -->
+    <!-- <button class="btn" onclick="my_modal_1.showModal()">open modal</button> -->
+    <dialog id="modalBox" class="modal">
+      <div class="modal-box">
+        <div id="modal-details">
+          <div>
+            <h2>Plant Name</h2>
+            <img src="" alt="" />
+            <p>category</p>
+            <p>price</p>
+            <p>Description</p>
+          </div>
+        </div>
+        <div class="modal-action">
+          <form method="dialog">
+            <!-- if there is a button in form, it will close the modal -->
+            <button class="btn">Close</button>
+          </form>
+        </div>
+      </div>
+    </dialog>
 
     <script src="./scripts/script.js"></script>
   </body>
